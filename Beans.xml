@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:mike.properties"/>
+    <bean id = "myFortuneService"
+          class="com.ninja.springHelloWorld.HappyFortuneService">
+    </bean>
+
+    <bean id = "helloWorld" class = "com.ninja.springHelloWorld.HelloWorld">
+        <property name = "message" value = "Hello World!"/>
+        <constructor-arg ref="myFortuneService" />
+    </bean>
+
+    <bean id=  "helloMike" class="com.ninja.springHelloWorld.MikeHello">
+        <property name = "info" value = "${mike.info}"/>
+    </bean>
+
+
+</beans>
